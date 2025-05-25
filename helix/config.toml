@@ -1,0 +1,30 @@
+theme = "adwaita-black-old"
+
+[editor]
+bufferline = "multiple"
+line-number = "relative"
+shell = ["nu","-c"]
+
+[editor.indent-guides]
+render = true
+character = "▏"
+
+[editor.soft-wrap]
+wrap-indicator = ""
+wrap-at-text-width = true
+
+[keys.normal]
+backspace = "delete_char_backward"
+C-backspace = "delete_word_backward"
+
+[keys.normal.g]
+L = "goto_line_end_newline"
+E = "goto_file_end"
+
+[keys.insert]
+A-o = "open_below"
+A-O = "open_above"
+A-h = "move_char_left"
+A-j = "move_visual_line_down"
+A-k = "move_visual_line_up"
+A-l = "move_char_right"

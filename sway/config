@@ -1,0 +1,39 @@
+include autostart
+
+set $gaps_o 0
+set $gaps_i 6
+
+set $term foot
+set $browser qutebrowser
+
+font pango:monospace 9
+
+gaps outer $gaps_o
+gaps inner $gaps_i
+
+floating_modifier Mod4
+tiling_drag off
+default_border pixel 2
+
+input type:touchpad {
+  natural_scroll enabled
+}
+
+# output "*" bg ~/.config/background fill
+output eDP-1 {
+  mode 1366x768@60Hz
+  background ~/.config/background fill
+  position 0 0
+}
+
+bar {
+  position bottom
+  status_command .config/sway/status
+  colors {
+    statusline #ffffff
+    background #000000
+    inactive_workspace #323232 #000000 #ffffff
+  }
+}
+
+include bindings
