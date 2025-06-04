@@ -1,0 +1,7 @@
+anchor = left
+height = 100%
+width = 20%
+font-size = 12
+prompt-text = " > "
+require-match = false
+include = config

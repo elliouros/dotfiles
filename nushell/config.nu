@@ -1,5 +1,7 @@
 # config.nu
 
+source ~/.local/zoxide.nu
+
 $env.config.show_banner = false
 $env.VISUAL = 'helix'
 $env.config.buffer_editor = 'helix'
@@ -32,7 +34,7 @@ $env.PROMPT_COMMAND = {||
   ]
   | if (($in | first) == '/') {update 0 ''} else {$in}
   | str join '/'
-  | str replace -r '^$' '/'
+  | if ($in == '') {'/'} else {$in}
   | if ($env.LOGNAME == root) {$'(ansi rb)($in)'} else {$in}
 }
 
@@ -43,7 +45,8 @@ $env.PROMPT_COMMAND_RIGHT = {||
 
 $env.PATH ++= [
   '~/.cargo/bin'
-  # '~/.local/share/gem/ruby/3.3.0/bin'
+  '~/.local/share/gem/ruby/3.4.0/bin'
   '~/.local/bin'
   '~/.bin'
+  '.'
 ]
