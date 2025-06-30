@@ -5,7 +5,7 @@ set $gaps_i 6
 
 set $term foot
 set $browser qutebrowser
-set $dmenu tofi-drun -c ~/.config/tofi/dmenu
+set $dmenu tofi-drun -c ~/.config/tofi/dmenu | xargs -r swaymsg exec --
 set $menu tofi-run -c ~/.config/tofi/menu | xargs -r foot
 # Variables are called in bindings.
 # $gaps_o and i are also important for bindings.
@@ -33,7 +33,7 @@ output eDP-1 {
 
 bar {
   position bottom
-  status_command .config/sway/status
+  status_command ~/.config/sway/status
   colors {
     statusline #ffffff
     background #000000

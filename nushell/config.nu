@@ -1,6 +1,7 @@
 # config.nu
 
 source ~/.local/zoxide.nu
+$env.LANG = $env.LANG? | default 'en_US.UTF-8'
 
 $env.config.show_banner = false
 $env.VISUAL = 'helix'
@@ -9,17 +10,16 @@ $env.config.edit_mode = 'vi'
 
 $env.config.filesize.unit = 'binary'
 
-# $env.config.history.file_format = 'sqlite'
+$env.config.history.file_format = 'sqlite'
 
 $env.PROMPT_COMMAND = {||
   # To show all directories fully, set $env.nu_full_dirs to true
   # To use default behavior, either hide-env nu_full_dirs or set it to 1
   # To show x amount of directories, set nu_full_dirs to x
-  let pwd = pwd | str replace -r $'^($env.HOME)' '~'
-  if ($env.nu_full_dirs? == true) {return $pwd}
-
   let full_dirs = $env.nu_full_dirs? | default 1
-  $pwd
+  pwd
+  | str replace -r $'^($env.HOME)' '~'
+  | if ($full_dirs == true) {return $in} else {$in}
   | path split
   | [
     ...(
