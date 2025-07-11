@@ -1,1 +1,2 @@
-exec pipewire
+exec --no-startup-id swaync
+exec --no-startup-id pipewire

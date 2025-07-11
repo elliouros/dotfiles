@@ -11,24 +11,33 @@ set $goto workspace number
 set $move move container to workspace number
 
 bindsym {
+  $mod+Shift+Escape exit
   $mod+z                exec --no-startup-id swaylock
+  $mod+$alt+z           exec --no-startup-id swaylock -C ~/.config/swaylock/private
   --locked $mod+Shift+z exec --no-startup-id systemctl suspend
 
-  $mod+F6 exec --no-startup-id brightnessctl set 5%-
-  $mod+F7 exec --no-startup-id brightnessctl set 5%+
+  $mod+F6       exec --no-startup-id brightnessctl set 5%-
+  $mod+F7       exec --no-startup-id brightnessctl set 5%+
+  $mod+Shift+F6 exec --no-startup-id brightnessctl set 1%-
+  $mod+Shift+F7 exec --no-startup-id brightnessctl set 1%+
 
-  $mod+F8  exec --no-startup-id pactl set-sink-mute \@DEFAULT_SINK@ toggle
-  $mod+F9  exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ -5%
-  $mod+F10 exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ +5%
+  --locked $mod+F8 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+  $mod+F9          exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+  $mod+F10         exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+  $mod+Shift+F9    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
+  $mod+Shift+F10   exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
 
-# $mod+$alt+F8  exec --no-startup-id pactl set-source-mute \@DEFAULT_SOURCE toggle
-# $mod+$alt+F9  exec --no-startup-id pactl set-source-volume \@DEFAULT_SOURCE -5%
-# $mod+$alt+F10 exec --no-startup-id pactl set-source-volume \@DEFAULT_SOURCE +5%
+# $mod+$alt+F8  exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# $mod+$alt+F9  exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ -5%
+# $mod+$alt+F10 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ +5%
 
   $mod+s       exec --no-startup-id ~/.bin/screenshot
   $mod+Shift+s exec --no-startup-id ~/.bin/screenshot -g
 
-  $mod+Shift+Escape exit
+  $mod+n            exec --no-startup-id swaync-client -t -sw
+  $mod+$alt+n       exec --no-startup-id swaync-client -d -sw
+  $mod+Shift+$alt+n exec --no-startup-id swaync-client -C -sw
+  $mod+Shift+n      exec --no-startup-id ~/.config/sway/swaync-menu.nu
 
   $mod+q       exec $term
   $mod+w       exec $browser
@@ -54,10 +63,10 @@ bindsym {
   $mod+$alt+$up    move up
   $mod+$alt+$right move right
 
-  $mod+Shift+$left  move left
-  $mod+Shift+$down  move down
-  $mod+Shift+$up    move up
-  $mod+Shift+$right move right
+  $mod+$alt+Left  move left
+  $mod+$alt+Down  move down
+  $mod+$alt+Up    move up
+  $mod+$alt+Right move right
 
   $mod+b split h
   $mod+v split v
@@ -79,7 +88,7 @@ bindsym {
   $mod+7 $goto 7
   $mod+8 $goto 8
   $mod+9 $goto 9
-  $mod+0 $goto 10
+  $mod+0 $goto 0
 
   $mod+$alt+1 $move 1
   $mod+$alt+2 $move 2
@@ -90,7 +99,7 @@ bindsym {
   $mod+$alt+7 $move 7
   $mod+$alt+8 $move 8
   $mod+$alt+9 $move 9
-  $mod+$alt+0 $move 10
+  $mod+$alt+0 $move 0
 
   $mod+Shift+1 $move 1; $goto 1
   $mod+Shift+2 $move 2; $goto 2
@@ -103,34 +112,27 @@ bindsym {
   $mod+Shift+9 $move 9; $goto 9
   $mod+Shift+0 $move 0; $goto 0
 
-  $mod+Shift+minus move scratchpad
-  $mod+minus       scratchpad show
+  $mod+Shift+Tab move scratchpad
+  $mod+Tab       scratchpad show
 
   $mod+Shift+c reload
 }
 
-mode "resize" {
-  bindsym {
-    $left  resize shrink width 10 px or 10 ppt
-    $down  resize grow height 10 px or 10 ppt
-    $up    resize shrink height 10 px or 10 ppt
-    $right resize grow width 10 px or 10 ppt
+mode "resize" bindsym {
+  $left  resize shrink width 10 px or 10 ppt
+  $down  resize grow height 10 px or 10 ppt
+  $up    resize shrink height 10 px or 10 ppt
+  $right resize grow width 10 px or 10 ppt
 
-    Left  resize shrink width 10 px or 10 ppt
-    Down  resize grow height 10 px or 10 ppt
-    Up    resize shrink height 10 px or 10 ppt
-    Right resize grow width 10 px or 10 ppt
+  Left  resize shrink width 10 px or 10 ppt
+  Down  resize grow height 10 px or 10 ppt
+  Up    resize shrink height 10 px or 10 ppt
+  Right resize grow width 10 px or 10 ppt
 
-    Return mode "default"
-    Escape mode "default"
-    $mod+r mode "default"
-  }
+  Return mode "default"
+  Escape mode "default"
+  $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
-
-mode "no binds (mod+Shift+Tab to exit)" {
-  bindsym $mod+Shift+Tab mode "default"
-}
-bindsym $mod+Shift+Tab mode "no binds (mod+Shift+Tab to exit)"
 
 bindsym $mod+Return input type:touchpad events toggle enabled disabled

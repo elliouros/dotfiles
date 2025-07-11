@@ -34,11 +34,7 @@ output eDP-1 {
 bar {
   position bottom
   status_command ~/.config/sway/status
-  colors {
-    statusline #ffffff
-    background #000000
-    inactive_workspace #323232 #000000 #ffffff
-  }
+  colors inactive_workspace #323232 #000000 #ffffff
 }
 
 exec --no-startup-id swayidle -w \

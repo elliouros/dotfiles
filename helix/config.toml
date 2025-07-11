@@ -16,6 +16,7 @@ wrap-at-text-width = true
 [keys.normal]
 backspace = "delete_char_backward"
 C-backspace = "delete_word_backward"
+X = "extend_line_above"
 
 [keys.normal.g]
 L = "goto_line_end_newline"
@@ -28,3 +29,4 @@ A-h = "move_char_left"
 A-j = "move_visual_line_down"
 A-k = "move_visual_line_up"
 A-l = "move_char_right"
+C-backspace = "delete_word_backward"
