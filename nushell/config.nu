@@ -1,9 +1,8 @@
 # config.nu
 
 source ~/.local/zoxide.nu
-$env.LANG = $env.LANG? | default 'en_US.UTF-8'
+$env.LANG = 'en_US.UTF-8'
 
-$env.config.show_banner = false
 $env.VISUAL = 'helix'
 $env.config.buffer_editor = 'helix'
 $env.config.edit_mode = 'vi'
@@ -18,7 +17,7 @@ $env.PROMPT_COMMAND = {||
   # To show x amount of directories, set nu_full_dirs to x
   let full_dirs = $env.nu_full_dirs? | default 1
   pwd
-  | str replace -r $'^($env.HOME)' '~'
+  | str replace -r $'^($nu.home-path)' '~'
   | if ($full_dirs == true) {return $in} else {$in}
   | path split
   | [
@@ -35,7 +34,7 @@ $env.PROMPT_COMMAND = {||
   | if (($in | first) == '/') {update 0 ''} else {$in}
   | str join '/'
   | if ($in == '') {'/'} else {$in}
-  | if ($env.LOGNAME == root) {$'(ansi rb)($in)'} else {$in}
+  | if ($env.LOGNAME == root) {(ansi rb) ++ $in} else {$in}
 }
 
 $env.PROMPT_COMMAND_RIGHT = {||
@@ -50,3 +49,15 @@ $env.PATH ++= [
   '~/.bin'
   '.'
 ]
+
+# mrrp 🥺
+load-env {
+  CARGO_MOMMYS_LITTLE: 'girl/pet/kitty/cat'
+  CARGO_MOMMYS_PRONOUNS: 'her/its'
+  CARGO_MOMMYS_ROLES: 'mommy/mistress/owner'
+  CARGO_MOMMYS_MOODS: 'chill/thirsty/yikes'
+}
+
+def banner [] {
+  source ~/.config/nushell/greet.nu
+}
