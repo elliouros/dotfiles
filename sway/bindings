@@ -31,12 +31,15 @@ bindsym {
 # $mod+$alt+F9  exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ -5%
 # $mod+$alt+F10 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ +5%
 
-  $mod+s       exec --no-startup-id ~/.bin/screenshot
-  $mod+Shift+s exec --no-startup-id ~/.bin/screenshot -g
+  $mod+s       exec --no-startup-id ~/.bin/screenshot -c
+  $mod+Shift+s exec --no-startup-id ~/.bin/screenshot -cg
+  $mod+$alt+s       exec --no-startup-id ~/.bin/screenshot
+  $mod+$alt+Shift+s exec --no-startup-id ~/.bin/screenshot -g
+  # simple nushell script i made- you'll have to point it to you own tool
 
-  $mod+n            exec --no-startup-id swaync-client -t -sw
-  $mod+$alt+n       exec --no-startup-id swaync-client -d -sw
-  $mod+Shift+$alt+n exec --no-startup-id swaync-client -C -sw
+  $mod+n            exec --no-startup-id swaync-client --toggle-panel
+  $mod+$alt+n       exec --no-startup-id swaync-client --toggle-dnd -sw
+  $mod+Shift+$alt+n exec --no-startup-id swaync-client --close-all -sw
   $mod+Shift+n      exec --no-startup-id ~/.config/sway/swaync-menu.nu
 
   $mod+q       exec $term
@@ -45,8 +48,8 @@ bindsym {
   $mod+Shift+e exec --no-startup-id $menu
   $mod+c       kill
 
-  $mod+a focus parent
-  $mod+d focus child
+  $mod+a       focus parent
+  $mod+Shift+a focus child
 
   $mod+$left  focus left
   $mod+$down  focus down
@@ -74,8 +77,8 @@ bindsym {
   $mod+Shift+space floating toggle
   $mod+space       focus mode_toggle
 
-  $mod+f      fullscreen toggle
-  $mod+$alt+s layout toggle split
+  $mod+f fullscreen toggle
+  # $mod+$alt+s layout toggle split # conflict with screenshot w/o copy
 
   $mod+grave gaps outer current toggle $gaps_o; gaps inner current toggle $gaps_i
 
@@ -119,17 +122,20 @@ bindsym {
 }
 
 mode "resize" bindsym {
-  $left  resize shrink width 10 px or 10 ppt
+  # slightly differs from standard sway bindings-
+  # mine:     hj grow, kl shrink
+  # standard: hk shrink, jl grow
+  # it's more intuitive to me this way; the left keys grow and the right shrink
+  $left  resize grow width 10 px or 10 ppt
   $down  resize grow height 10 px or 10 ppt
   $up    resize shrink height 10 px or 10 ppt
-  $right resize grow width 10 px or 10 ppt
+  $right resize shrink width 10 px or 10 ppt
 
-  Left  resize shrink width 10 px or 10 ppt
+  Left  resize grow width 10 px or 10 ppt
   Down  resize grow height 10 px or 10 ppt
   Up    resize shrink height 10 px or 10 ppt
-  Right resize grow width 10 px or 10 ppt
+  Right resize shrink width 10 px or 10 ppt
 
-  Return mode "default"
   Escape mode "default"
   $mod+r mode "default"
 }

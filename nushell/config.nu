@@ -34,7 +34,7 @@ $env.PROMPT_COMMAND = {||
   | if (($in | first) == '/') {update 0 ''} else {$in}
   | str join '/'
   | if ($in == '') {'/'} else {$in}
-  | if ($env.LOGNAME == root) {(ansi rb) ++ $in} else {$in}
+  | if ((whoami) == root) {(ansi rb) ++ $in} else {$in}
 }
 
 $env.PROMPT_COMMAND_RIGHT = {||

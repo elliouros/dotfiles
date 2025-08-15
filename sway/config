@@ -38,11 +38,12 @@ bar {
 }
 
 exec --no-startup-id swayidle -w \
-  timeout 300 'swaylock --grace 15' \
-  timeout 360 'swaymsg "output * power off"' \
-    resume 'swaymsg "output * power on"' \
-  timeout 600 'systemctl suspend' \
   before-sleep 'swaylock' \
-  lock 'swaylock'
+  lock 'swaylock' #\
+  # timeout 300 'swaylock --grace 15' \
+  # timeout 360 'swaymsg "output * power off"' \
+    # resume 'swaymsg "output * power on"' \
+  # timeout 600 'systemctl suspend' \
+# does nothing but piss me off TwT
 
 include bindings

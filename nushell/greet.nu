@@ -9,6 +9,10 @@ const cat = [
 let config = [
   { chance: 1
     exec: {
+      if ($nu.is-login) {':sillycar:'} else {open ~/.config/sillycar.sixel}
+    }
+} { chance: 5
+    exec: {
       [ $"\e[1;38;5;4m($cat.0) Welcome, \e[1;38;5;211m(whoami)"
         $"($cat.1) \e[1;32mStartup Time:"
         $"\e[37m($cat.2) \e[0m($nu.startup-time)"
@@ -17,13 +21,13 @@ let config = [
   }
 ]
 
-def repeat [times --fold(-f)=[]] {
+def repeat [ times --fold(-f)=[] ] {
   let val = $in
-  if ($times <= 0) {
-    return $fold
-  } else {
+  if ($times > 0) {
     $val
     | repeat ($times - 1) -f ($fold | append $val)
+  } else {
+    $fold
   }
 }
 
@@ -36,7 +40,7 @@ let list = $config
 
 let index = $list
 | length
-| 0..($in - 1)
-| random int $in
-
-$list | get $index | do $in
+| random int 0..<$in
+$list
+| get $index
+| do $in
