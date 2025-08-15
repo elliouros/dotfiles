@@ -10,6 +10,11 @@ set $right l
 set $goto workspace number
 set $move move container to workspace number
 
+bindgesture {
+  swipe:right workspace prev
+  swipe:left workspace next
+}
+
 bindsym {
   $mod+Shift+Escape exit
   $mod+z                exec --no-startup-id swaylock
