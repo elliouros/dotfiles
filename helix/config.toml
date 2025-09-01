@@ -5,18 +5,23 @@ bufferline = "multiple"
 line-number = "relative"
 shell = ["nu","-c"]
 
+[editor.lsp]
+auto-signature-help = false
+
 [editor.indent-guides]
 render = true
 character = "▏"
 
 [editor.soft-wrap]
-wrap-indicator = ""
+wrap-indicator = ">>"
 wrap-at-text-width = true
 
 [keys.normal]
 backspace = "delete_char_backward"
 C-backspace = "delete_word_backward"
 X = "extend_line_above"
+A-w = "move_prev_word_end"
+A-W = "move_prev_long_word_end"
 
 [keys.normal.g]
 L = "goto_line_end_newline"

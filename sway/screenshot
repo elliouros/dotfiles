@@ -1,0 +1,58 @@
+#!/usr/bin/env nu
+def find-focused []: record -> record {
+  let $inp = $in
+  $inp.nodes ++ $inp.floating_nodes
+  | where id == $inp.focus.0
+  | get 0?
+  | default {type: 'nofocus' focused: true}
+  | if $in.focused {$in} else {find-focused}
+}
+
+def current []: nothing -> string {
+  swaymsg -t get_tree
+  | from json
+  | find-focused
+  | get rect
+  | $'($in.x),($in.y) ($in.width)x($in.height)'
+}
+
+def 'path ensure' [
+  count: int = 0
+]: path -> path {
+  let path = $in | path join
+  $path
+  | path parse
+  | if ($count != 0) {
+    update stem {|path| $"($path.stem)\(($count)\)"}
+  } else { $in }
+  | if ($in.parent | path exists | not $in) {
+    error make {msg: 'parent directory does not exist'}
+  } else { $in | path join }
+  | if ($in | path exists) {
+    $path | path ensure ($count + 1)
+  } else {
+    $in
+  }
+}
+
+def main [
+  geometry?: string
+  --copy(-c)
+] {
+  match $geometry {
+    'slurp'   => {grim -g (slurp) -},
+    'current' => {grim -g (current) -},
+    _         => {grim -}
+  }
+  | if $copy {let image = $in
+    $image | wl-copy --type image/png
+    $image
+  } else {$in}
+  | save (
+    $nu.home-path
+    | path join Media screenshots (
+      date now | format date '%Y-%m-%d_%Hh%Mm%Ss.png'
+    )
+    | path ensure
+  )
+}

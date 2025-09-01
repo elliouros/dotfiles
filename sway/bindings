@@ -36,11 +36,12 @@ bindsym {
 # $mod+$alt+F9  exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ -5%
 # $mod+$alt+F10 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ +5%
 
-  $mod+s       exec --no-startup-id ~/.bin/screenshot -c
-  $mod+Shift+s exec --no-startup-id ~/.bin/screenshot -cg
-  $mod+$alt+s       exec --no-startup-id ~/.bin/screenshot
-  $mod+$alt+Shift+s exec --no-startup-id ~/.bin/screenshot -g
-  # simple nushell script i made- you'll have to point it to you own tool
+  $mod+s       exec --no-startup-id ~/.config/sway/screenshot -c screen
+  $mod+Shift+s exec --no-startup-id ~/.config/sway/screenshot -c slurp
+  $mod+Ctrl+s  exec --no-startup-id ~/.config/sway/screenshot -c current
+  $mod+$alt+s       exec --no-startup-id ~/.config/sway/screenshot screen
+  $mod+$alt+Shift+s exec --no-startup-id ~/.config/sway/screenshot slurp
+  $mod+$alt+Ctrl+s  exec --no-startup-id ~/.config/sway/screenshot current
 
   $mod+n            exec --no-startup-id swaync-client --toggle-panel
   $mod+$alt+n       exec --no-startup-id swaync-client --toggle-dnd -sw
@@ -86,6 +87,9 @@ bindsym {
   # $mod+$alt+s layout toggle split # conflict with screenshot w/o copy
 
   $mod+grave gaps outer current toggle $gaps_o; gaps inner current toggle $gaps_i
+
+  $mod+minus workspace prev
+  $mod+equal workspace next
 
   $mod+1 $goto 1
   $mod+2 $goto 2

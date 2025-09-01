@@ -9,10 +9,6 @@ const cat = [
 let config = [
   { chance: 1
     exec: {
-      if ($nu.is-login) {':sillycar:'} else {open ~/.config/sillycar.sixel}
-    }
-} { chance: 5
-    exec: {
       [ $"\e[1;38;5;4m($cat.0) Welcome, \e[1;38;5;211m(whoami)"
         $"($cat.1) \e[1;32mStartup Time:"
         $"\e[37m($cat.2) \e[0m($nu.startup-time)"
