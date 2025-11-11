@@ -1,0 +1,3 @@
+[[language]]
+name = "nu"
+language-servers = [ {name = "nu-lsp", except-features = [ "signature-help" ] } ]

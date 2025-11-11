@@ -1,0 +1,45 @@
+theme = "adwaita-black-old"
+
+[editor]
+bufferline = "multiple"
+line-number = "relative"
+shell = ["nu","-c"]
+
+[editor.search]
+smart-case = false
+
+[editor.indent-guides]
+render = true
+character = "▏"
+
+[editor.soft-wrap]
+wrap-indicator = ">>"
+wrap-at-text-width = true
+
+[keys.normal]
+"[" = "goto_previous_buffer"
+"]" = "goto_next_buffer"
+backspace = "delete_char_backward"
+C-backspace = "delete_word_backward"
+X = "extend_line_above"
+A-x = "@gsvgl<esc>"
+# A-C = "@c<ret><esc>J"
+A-w = "move_prev_word_end"
+A-W = "move_prev_long_word_end"
+C-A = "select_all"
+C-A-a = "@<C-a><A-,>"
+C-d = "@glvghd"
+C-u = "no_op"
+
+[keys.normal.g]
+L = "goto_line_end_newline"
+E = "goto_file_end"
+
+[keys.insert]
+A-o = "open_below"
+A-O = "open_above"
+A-h = "move_char_left"
+A-j = "move_visual_line_down"
+A-k = "move_visual_line_up"
+A-l = "move_char_right"
+C-backspace = "delete_word_backward"

@@ -1,0 +1,8 @@
+screenshots
+effect-blur=12x2
+indicator
+clock
+timestr=%T
+datestr=%a, %m-%d %b
+grace-no-mouse
+daemonize

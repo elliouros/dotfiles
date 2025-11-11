@@ -1,0 +1,11 @@
+anchor = top
+width = 100%
+height = 30
+horizontal = true
+font-size = 15
+prompt-text = " run: "
+min-input-width = 120
+result-spacing = 15
+;drun-launch = true
+terminal = foot
+include = config

@@ -1,0 +1,49 @@
+include autostart
+
+set $gaps_o 0
+set $gaps_i 6
+
+set $term foot
+set $browser qutebrowser
+set $dmenu tofi-drun -c ~/.config/tofi/dmenu | xargs -r swaymsg exec --
+set $menu tofi-run -c ~/.config/tofi/menu | xargs -r foot
+# Variables are called in bindings.
+# $gaps_o and i are also important for bindings.
+
+font pango:monospace 9
+
+gaps outer $gaps_o
+gaps inner $gaps_i
+
+floating_modifier Mod4
+tiling_drag off
+default_border pixel 2
+
+input type:touchpad {
+  natural_scroll enabled
+  dwt disabled
+}
+
+# output "*" bg ~/.config/background fill
+output eDP-1 {
+  mode 1366x768@60Hz
+  background ~/.config/background fill
+  position 0 0
+}
+
+bar {
+  position bottom
+  status_command ~/.config/sway/status
+  colors inactive_workspace #323232 #000000 #ffffff
+}
+
+exec --no-startup-id swayidle -w \
+  before-sleep 'swaylock' \
+  lock 'swaylock' #\
+  # timeout 300 'swaylock --grace 15' \
+  # timeout 360 'swaymsg "output * power off"' \
+    # resume 'swaymsg "output * power on"' \
+  # timeout 600 'systemctl suspend' \
+# does nothing but piss me off TwT
+
+include bindings

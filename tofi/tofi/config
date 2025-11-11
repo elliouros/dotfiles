@@ -1,0 +1,10 @@
+history = false
+outline-width = 0
+border-width = 0
+background-color = #000000
+padding-top = 0
+padding-bottom = 0
+padding-left = 0
+padding-right = 0
+font = /usr/share/fonts/gnu-free/FreeMono.otf
+ascii-input = true

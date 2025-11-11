@@ -1,0 +1,6 @@
+indicator
+clock
+timestr=%T
+datestr=%a, %m-%d %b
+color=000000
+daemonize
