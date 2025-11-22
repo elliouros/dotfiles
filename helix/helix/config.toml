@@ -2,7 +2,6 @@ theme = "adwaita-black-old"
 
 [editor]
 bufferline = "multiple"
-line-number = "relative"
 shell = ["nu","-c"]
 
 [editor.search]

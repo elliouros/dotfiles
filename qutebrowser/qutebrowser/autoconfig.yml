@@ -9,8 +9,8 @@ settings:
   bindings.commands:
     global:
       normal:
+        ;m: hint links fill :bookmark-add {hint-url}
         B: null
-        ;m: hint links fill :bookmark-add {hint-url} 
         SH: history -t
         Sh: history
         Y: yank selection
@@ -35,6 +35,8 @@ settings:
     - '{file}:{line}:{column}'
   url.auto_search:
     global: naive
+  url.default_page:
+    global: about:blank
   url.searchengines:
     global:
       DEFAULT: https://duckduckgo.com/?q={}
@@ -44,3 +46,7 @@ settings:
       hg: https://hoogle.haskell.org/?hoogle={}
       wh: https://wordhippo.com/what-is/another-word-for/{}.html
       wiki: https://en.wikipedia.org/w/index.php?search={}
+  url.start_pages:
+    global: about:blank
+  window.title_format:
+    global: '{current_title}'

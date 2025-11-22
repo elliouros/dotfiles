@@ -1,5 +1,6 @@
-# test definition for isolating, comment/delete when actually using
-# XDG_CONFIG_HOME = $(HOME)/iso
+# test definitions for isolating, comment/delete when actually using
+# HOME = $(HOME)/iso/
+# XDG_CONFIG_HOME = $(HOME)/.config
 
 STOW = stow -v
 CONFDIR = $(or $(XDG_CONFIG_HOME),$(HOME)/.config)
