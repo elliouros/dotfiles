@@ -16,8 +16,8 @@ wrap-indicator = ">>"
 wrap-at-text-width = true
 
 [keys.normal]
-"[" = "goto_previous_buffer"
-"]" = "goto_next_buffer"
+"-" = "goto_previous_buffer"
+"=" = "goto_next_buffer"
 backspace = "delete_char_backward"
 C-backspace = "delete_word_backward"
 X = "extend_line_above"
