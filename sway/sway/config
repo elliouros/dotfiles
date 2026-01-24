@@ -4,7 +4,7 @@ set $gaps_o 0
 set $gaps_i 6
 
 set $term foot
-set $browser qutebrowser
+set $browser firefox
 set $dmenu tofi-drun -c ~/.config/tofi/dmenu | xargs -r swaymsg exec --
 set $menu tofi-run -c ~/.config/tofi/menu | xargs -r foot
 # Variables are called in bindings.
