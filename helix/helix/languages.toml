@@ -1,6 +1,9 @@
 [[language]]
 name = "nu"
-language-servers = [ {name = "nu-lsp", except-features = [ "signature-help" ] } ]
+language-servers = [
+  {name = "nu-lsp", except-features = [ "signature-help" ]}
+]
+indent = { tab-width = 4, unit = " " }
 
 [[language]]
 name = "c"

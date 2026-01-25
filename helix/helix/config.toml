@@ -1,4 +1,5 @@
-theme = "adwaita-black-old"
+# theme = "adwaita-black"
+theme = "gruvblack"
 
 [editor]
 bufferline = "multiple"

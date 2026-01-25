@@ -62,15 +62,15 @@
 "diff.delta" = "orange_3"
 "diff.delta.moved" = "orange_2"
 
-"ui.background" = { fg = "light_4", bg = "libadwaita_dark" }
-"ui.background.separator" = { fg = "split_and_borders", bg = "libadwaita_dark" }
+"ui.background" = { fg = "light_4", bg = "default" }
+"ui.background.separator" = { fg = "split_and_borders", bg = "default" }
 "ui.cursor" = { fg = "libadwaita_dark", bg = "light_5" }
 "ui.cursor.insert" = { fg = "libadwaita_dark", bg = "light_5" }
 "ui.cursor.select" = { fg = "libadwaita_dark", bg = "light_5" }
 "ui.cursor.match" = { fg = "libadwaita_dark", bg = "blue_2" }
 "ui.cursor.primary" = { fg = "libadwaita_dark", bg = "light_7" }
 "ui.linenr" = "dark_2"
-"ui.linenr.selected" = { fg = "light_7", bg = "libadwaita_dark_alt", modifiers = [
+"ui.linenr.selected" = { fg = "light_4", bg = "default", modifiers = [
   "bold",
 ] }
 "ui.statusline" = { fg = "light_4", bg = "libadwaita_dark_alt" }
@@ -83,6 +83,7 @@
 "ui.text" = "light_4"
 "ui.virtual" = "dark_1"
 "ui.virtual.ruler" = { bg = "libadwaita_popup"}
+"ui.virtual.indent-guide" = "dark_4"
 "ui.menu" = { fg = "light_4", bg = "libadwaita_popup" }
 "ui.menu.selected" = { fg = "light_4", bg = "blue_5" }
 "ui.menu.scroll" = { fg = "light_7", bg = "dark_3" }
@@ -102,7 +103,7 @@
 "diagnostic.unnecessary" = { modifiers = ["dim"] }
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
 
-"ui.bufferline" = { fg = "dark_2", bg = "libadwaita_dark" }
+"ui.bufferline" = { fg = "dark_2", bg = "default" }
 "ui.bufferline.active" = { fg = "light_4", bg = "libadwaita_dark_alt" }
 
 [palette]
@@ -133,9 +134,9 @@ green_4 = "#2EC27E"
 green_5 = "#26A269"
 green_6 = "#1F7F56"
 green_7 = "#1C6849"
-libadwaita_dark = "#1D1D1D"
-libadwaita_dark_alt = "#303030"
-libadwaita_popup = "#282828"
+libadwaita_dark = "#000000"
+libadwaita_dark_alt = "#1C1C1C"
+libadwaita_popup = "#0C0C0C"
 light_1 = "#FFFFFF"
 light_2 = "#FCFCFC"
 light_3 = "#F6F5F4"

@@ -2,8 +2,8 @@
 
 $env.LANG = 'en_US.UTF-8'
 
-$env.VISUAL = 'helix'
-$env.config.buffer_editor = 'helix'
+$env.VISUAL = 'hx'
+$env.config.buffer_editor = 'hx'
 $env.config.edit_mode = 'vi'
 
 $env.config.filesize.unit = 'binary'
@@ -23,7 +23,7 @@ $env.PROMPT_COMMAND = {
   # To show x amount of directories, set nu_full_dirs to x
   let full_dirs = $env.nu_full_dirs? | default 1
   pwd
-  | str replace -r $'^($nu.home-path | str replace -ar $meta '\$1')' '~'
+  | str replace -r $'^($nu.home-dir | str replace -ar $meta '\$1')' '~'
   | if ($full_dirs == true) {return $in} else {$in}
   | path split
   | [
