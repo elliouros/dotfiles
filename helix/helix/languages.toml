@@ -3,8 +3,15 @@ name = "nu"
 language-servers = [
   {name = "nu-lsp", except-features = [ "signature-help" ]}
 ]
-indent = { tab-width = 4, unit = " " }
+indent = { tab-width = 4, unit = "	" }
 
 [[language]]
 name = "c"
 indent = { tab-width = 8, unit = "	" }
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
