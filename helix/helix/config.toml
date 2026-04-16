@@ -29,7 +29,7 @@ A-W = "move_prev_long_word_end"
 C-A = "select_all"
 C-A-a = "@<C-a><A-,>"
 C-d = "@glvghd"
-C-u = "no_op"
+# C-u = "no_op"
 
 [keys.normal.g]
 L = "goto_line_end_newline"

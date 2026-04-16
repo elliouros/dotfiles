@@ -37,8 +37,8 @@
 "function.builtin" = { fg = "yellow1" }
 "function.macro" = { fg = "blue1" }
 
-"keyword" = { fg = "red1" }
-"keyword.control.import" = { fg = "aqua1" }
+"keyword" = { fg = "red1", modifiers = ["bold"] }
+"keyword.control.import" = { fg = "aqua1", modifiers = ["bold"] }
 
 "label" = { fg = "red1" }
 

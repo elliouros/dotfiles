@@ -72,27 +72,18 @@ def banner [] {
 
 # aliases and commands
 
-def lsrm [
-  glob: glob = `*`
-  --all(-a)
-  --dry(-d)
+def edit [
+  glob: glob
 ] {
-  glob $glob
-  | if (not $all) {
-    path parse -e ''
-    | where stem =~ '^[^\.].+$'
-    | path join
-  } else {$in}
-  | each {|path| # Convert to table
-    {
-      name: $"\(($path | path type | str substring 0..2)\) ($path | path basename)"
-      path: ($path)
+  let files = ls $glob
+  | where type == file
+  | get name
+  let len = $files | length
+  if ($len >= 10) {
+    let inp = input $'Opening ($len) files. Are you sure? [Y/N]: '
+    if (not ($inp | str starts-with --ignore-case y)) {
+      return
     }
   }
-  | input list -md name
-  | get path
-  | if not $dry {
-      each {rm $in}
-      null
-  } else {$in}
+  run-external $env.config.buffer_editor ...$files
 }
